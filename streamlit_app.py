@@ -6,20 +6,20 @@ import os
 
 with open("data/current_teams.json") as f:
     poll_data = json.load(f)
-with open('data/.tokens') as f:
-    tokens = json.load(f)
+valid_users = st.secrets["users"]["valid_usernames"]
 
-token = st.text_input("Enter your username:").lower()
+# User input field
+username = st.text_input("Enter your username to begin:")
 
-if token:
-    if token in tokens:
-        st.success(f"Welcome, {tokens[token]}!")
-        st.session_state["user_id"] = token
-        st.session_state["user_name"] = tokens[token]
+if username:
+    if username in valid_users:
+        st.success(f"Welcome, {username}!")
+        st.session_state["user_id"] = username
+        # Proceed with quiz logic here
     else:
-        st.error("Invalid access code.")
+        st.error("Invalid username. Please check your access code.")
 else:
-    st.warning("Please enter your access code.")
+    st.info("Please enter your assigned username.")
 
 if "responses" not in st.session_state:
     st.session_state.responses = {}
