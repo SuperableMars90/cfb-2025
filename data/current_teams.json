@@ -1,0 +1,28 @@
+{
+  "Player": {
+    "question": "Picks for: ",
+    "answers": ["Bob", "Jacob"],
+    "followups": {
+      "Bob": {
+        "ACC": {
+          "question": "ACC",
+          "answers": ["FSU", "Clemson"]
+        },
+        "SEC":{
+            "question":"SEC",
+            "answers":["Alabama","Georgia"]
+        }
+      },
+      "Jacob": {
+        "ACC": {
+          "question": "ACC",
+          "answers": ["Virginia", "GA Tech"]
+        },
+        "SEC":{
+            "question":"SEC",
+            "answers":["Tennessee","Texas"]
+        }
+      }
+    }
+}
+}
