@@ -12,6 +12,7 @@ valid_users = st.secrets["users"]["valid_usernames"]
 username = st.text_input("Enter your username to begin:")
 if "user_id" not in st.session_state:
     st.session_state["user_id"] = None
+st.session_state["timestamp"] = datetime.now()
 if username:
     if username in valid_users:
         st.success(f"Welcome, {username}!")
