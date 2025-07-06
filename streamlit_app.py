@@ -62,13 +62,42 @@ if ready_to_submit:
             ready_to_submit = False
             break
 
+
+def write_to_gsheet(row_data):
+    scope = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive"
+    ]
+    credentials = Credentials.from_service_account_info(
+        st.secrets["gcp_service_account"], scopes=scope
+    )
+    client = gspread.authorize(credentials)
+    
+    # Open the sheet (use your actual sheet ID)
+    sheet = client.open_by_key("1RcC3Sv5NuD7isPRxac121rYwAseUlONyOv_cMLgD1Ak")
+    worksheet = sheet.sheet1  # Use the first worksheet
+
+    # Append data
+    worksheet.append_row(row_data)
+
+def get_all_question_ids(poll_data):
+    keys = []
+    for main_qid, main_q in poll_data.items():
+        keys.append(main_qid)
+        for followups in main_q.get("followups", {}).values():
+            keys.extend(followups.keys())
+    return keys
+
+question_ids = get_all_question_ids(poll_data)
+
+# In your Submit block
 if st.button("Submit", disabled=not ready_to_submit):
     st.session_state.responses["timestamp"] = datetime.now().isoformat()
-    df = pd.DataFrame([st.session_state.responses])
-    df['Week Num']=[-1 for i in range(df.shape[0])]
-    df.to_csv("data/picks.csv", mode="a", index=False, header=not os.path.exists("results.csv"))
-    st.success("Response recorded!")
+    row = [st.session_state.get("user_id", "")]
+    row += [st.session_state.responses.get(qid, "") for qid in question_ids]
+    row.append(st.session_state.responses.get("timestamp", ""))
+    write_to_gsheet(row)
 
-    # Reset state for next submission
+    st.success("Response recorded!")
     for key in list(st.session_state.responses.keys()):
         st.session_state.pop(key)
