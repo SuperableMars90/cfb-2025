@@ -2,5 +2,5 @@ pandas
 datetime
 os
 streamlit
+google
 gspread
-google.oauth2.service_account import Credentials
