@@ -1,6 +1,4 @@
-pandas
-datetime
-os
 streamlit
-google
-gspread
+gspread==5.12.0
+pandas
+google-auth
