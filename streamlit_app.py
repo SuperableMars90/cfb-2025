@@ -3,6 +3,8 @@ import json
 import pandas as pd
 from datetime import datetime
 import os
+import gspread
+from google.oauth2.service_account import Credentials
 
 with open("data/current_teams.json") as f:
     poll_data = json.load(f)
@@ -63,6 +65,7 @@ if ready_to_submit:
 if st.button("Submit", disabled=not ready_to_submit):
     st.session_state.responses["timestamp"] = datetime.now().isoformat()
     df = pd.DataFrame([st.session_state.responses])
+    df['Week Num']=[-1 for i in range(df.shape[0])]
     df.to_csv("data/picks.csv", mode="a", index=False, header=not os.path.exists("results.csv"))
     st.success("Response recorded!")
 

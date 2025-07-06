@@ -166,4 +166,4 @@ cython_debug/
 ## user custom
 data/.tokens
 .secret
-.troubleshooting.ipynb
+troubleshooting.ipynb
