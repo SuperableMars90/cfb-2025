@@ -17,7 +17,7 @@ if "user_id" not in st.session_state:
 st.session_state["timestamp"] = datetime.now()
 if username:
     if username in valid_users:
-        st.success(f"Welcome, {username}!")
+        st.success(f"Welcome, {valid_users[username]}!")
         st.session_state["user_id"] = username
         # Proceed with quiz logic here
     else:
@@ -28,13 +28,13 @@ else:
 if "responses" not in st.session_state:
     st.session_state.responses = {}
 
-main_qid = "Player"
-main_q = poll_data[main_qid]
+#main_qid = "Player"
+#main_q = poll_data[main_qid]
 
 # Insert dummy option at the top
-main_options = ["-- Select a player --"] + main_q["answers"]
-selected_main = st.selectbox(main_q["question"], main_options, index=0, key=main_qid)
-
+#main_options = ["-- Select a player --"] + main_q["answers"]
+#selected_main = st.selectbox(main_q["question"], main_options, index=0, key=main_qid)
+selected_main = username
 if selected_main != "-- Select a player --":
     st.session_state.responses[main_qid] = selected_main
 
