@@ -27,7 +27,7 @@ else:
 
 if "responses" not in st.session_state:
     st.session_state.responses = {}
-display_name = st.secrets['map'][valid_user]
+display_name = st.secrets['map'][username]
 print(display_name)
 main_qid = "Player"
 main_q = poll_data[main_qid]
