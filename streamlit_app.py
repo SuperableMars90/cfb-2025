@@ -29,7 +29,7 @@ if "responses" not in st.session_state:
     st.session_state.responses = {}
 
 main_qid = "Player"
-#main_q = poll_data[main_qid]
+main_q = poll_data[main_qid]
 
 # Insert dummy option at the top
 main_options = ["-- Select a player --"] + main_q["answers"]
