@@ -34,9 +34,9 @@ if "responses" not in st.session_state:
 # Insert dummy option at the top
 #main_options = ["-- Select a player --"] + main_q["answers"]
 #selected_main = st.selectbox(main_q["question"], main_options, index=0, key=main_qid)
-selected_main = username
+selected_main = valid_users[username]
 if selected_main != "-- Select a player --":
-    st.session_state.responses[main_qid] = selected_main
+    #st.session_state.responses[main_qid] = selected_main
 
     followups = main_q.get("followups", {}).get(selected_main, {})
     for fqid, fqdata in followups.items():
