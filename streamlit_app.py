@@ -17,7 +17,7 @@ if "user_id" not in st.session_state:
 st.session_state["timestamp"] = datetime.now()
 if username:
     if username in valid_users:
-        st.success(f"Welcome, {valid_users[username]}!")
+        st.success(f"Welcome, {username}!")
         st.session_state["user_id"] = username
         # Proceed with quiz logic here
     else:
@@ -26,10 +26,7 @@ else:
     st.info("Please enter your assigned username.")
 
 if "responses" not in st.session_state:
-    st.session_state.responses = {}
-print(username)
-display_name = st.secrets['map'][username]
-print(display_name)
+
 main_qid = "Player"
 main_q = poll_data[main_qid]
 

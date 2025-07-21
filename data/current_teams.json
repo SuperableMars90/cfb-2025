@@ -3,28 +3,158 @@
     "question":"Week Num: ",
     "answers":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
     "question": "Picks for: ",
-    "answers": ["Bob", "Jacob"],
+    "answers": ["Bob", "Jacob","Zach"],
     "followups": {
       "Bob": {
         "ACC": {
           "question": "ACC",
           "answers": ["FSU", "Clemson"]
         },
+        "Big 10":{
+            "question":"Big 10",
+            "answers":["Ohio State","Michigan"]
+        },
+        "Big 12":{
+            "question":"Big 12",
+            "answers":["TCU","Kansas"]
+        },
         "SEC":{
             "question":"SEC",
             "answers":["Alabama","Georgia"]
-        }
+        },
+        "P4 Flex":{
+            "question":"P4 Flex",
+            "answers":["Ohio State","Michigan"]
+        },
+        "American":{
+            "question":"American",
+            "answers":["Memphis","ECU"]
+        },
+        "C-USA":{
+            "question":"C-USA",
+            "answers":["FIU","MTSU"]
+        },
+        "MAC":{
+            "question":"MAC",
+            "answers":["Bowling Green","Akron"]
+        },
+        "Mountain West":{
+            "question":"Mountain West",
+            "answers":["Air Force","Colorado State"]
+        },
+        "Sun Belt":{
+            "question":"Sun Belt",
+            "answers":["App State","Coastal Carolina"]
+        },
+        "G5 Flex":{
+            "question":"G5 Flex",
+            "answers":["Team 1","Team 2"]
+        },
+        "Wild Card":{
+            "question":"Wild Card",
+            "answers":["Team 1","Team 2"]
+        },
       },
       "Jacob": {
         "ACC": {
           "question": "ACC",
-          "answers": ["Virginia", "GA Tech"]
+          "answers": ["FSU", "Clemson"]
+        },
+        "Big 10":{
+            "question":"Big 10",
+            "answers":["Ohio State","Michigan"]
+        },
+        "Big 12":{
+            "question":"Big 12",
+            "answers":["TCU","Kansas"]
         },
         "SEC":{
             "question":"SEC",
-            "answers":["Tennessee","Texas"]
-        }
-      }
+            "answers":["Alabama","Georgia"]
+        },
+        "P4 Flex":{
+            "question":"P4 Flex",
+            "answers":["Ohio State","Michigan"]
+        },
+        "American":{
+            "question":"American",
+            "answers":["Memphis","ECU"]
+        },
+        "C-USA":{
+            "question":"C-USA",
+            "answers":["FIU","MTSU"]
+        },
+        "MAC":{
+            "question":"MAC",
+            "answers":["Bowling Green","Akron"]
+        },
+        "Mountain West":{
+            "question":"Mountain West",
+            "answers":["Air Force","Colorado State"]
+        },
+        "Sun Belt":{
+            "question":"Sun Belt",
+            "answers":["App State","Coastal Carolina"]
+        },
+        "G5 Flex":{
+            "question":"G5 Flex",
+            "answers":["Team 1","Team 2"]
+        },
+        "Wild Card":{
+            "question":"Wild Card",
+            "answers":["Team 1","Team 2"]
+        },
+      },
+      "Zach": {
+        "ACC": {
+          "question": "ACC",
+          "answers": ["FSU", "Clemson"]
+        },
+        "Big 10":{
+            "question":"Big 10",
+            "answers":["Ohio State","Michigan"]
+        },
+        "Big 12":{
+            "question":"Big 12",
+            "answers":["TCU","Kansas"]
+        },
+        "SEC":{
+            "question":"SEC",
+            "answers":["Alabama","Georgia"]
+        },
+        "P4 Flex":{
+            "question":"P4 Flex",
+            "answers":["Ohio State","Michigan"]
+        },
+        "American":{
+            "question":"American",
+            "answers":["Memphis","ECU"]
+        },
+        "C-USA":{
+            "question":"C-USA",
+            "answers":["FIU","MTSU"]
+        },
+        "MAC":{
+            "question":"MAC",
+            "answers":["Bowling Green","Akron"]
+        },
+        "Mountain West":{
+            "question":"Mountain West",
+            "answers":["Air Force","Colorado State"]
+        },
+        "Sun Belt":{
+            "question":"Sun Belt",
+            "answers":["App State","Coastal Carolina"]
+        },
+        "G5 Flex":{
+            "question":"G5 Flex",
+            "answers":["Team 1","Team 2"]
+        },
+        "Wild Card":{
+            "question":"Wild Card",
+            "answers":["Team 1","Team 2"]
+        },
+      },
     }
 }
 }
