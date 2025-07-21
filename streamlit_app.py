@@ -14,6 +14,8 @@ valid_users = st.secrets["users"]["valid_usernames"]
 username = st.text_input("Enter your username to begin:")
 if "user_id" not in st.session_state:
     st.session_state["user_id"] = None
+if "name" not in st.session_state:
+    st.session_state["name"] = None
 st.session_state["timestamp"] = datetime.now()
 if username:
     if username in valid_users:
@@ -24,8 +26,6 @@ if username:
         st.error("Invalid username. Please check your access code.")
 else:
     st.info("Please enter your assigned username.")
-
-if "responses" not in st.session_state:
 
 main_qid = "Player"
 main_q = poll_data[main_qid]
