@@ -55,7 +55,7 @@
         "Wild Card":{
             "question":"Wild Card",
             "answers":["Team 1","Team 2"]
-        },
+        }
       },
       "Jacob": {
         "Week num":{
@@ -109,7 +109,7 @@
         "Wild Card":{
             "question":"Wild Card",
             "answers":["Team 1","Team 2"]
-        },
+        }
       },
       "Zach": {
         "Week num":{
@@ -163,8 +163,8 @@
         "Wild Card":{
             "question":"Wild Card",
             "answers":["Team 1","Team 2"]
-        },
-      },
+        }
+      }
     }
 }
 }
