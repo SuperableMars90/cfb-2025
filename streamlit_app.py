@@ -17,7 +17,7 @@ if "user_id" not in st.session_state:
 if "name" not in st.session_state:
     st.session_state["name"] = None
 if 'responses' not in st.session_state:
-    st.session_state['response'] = {}
+    st.session_state['responses'] = {}
 st.session_state["timestamp"] = datetime.now()
 if username:
     if username in valid_users:
