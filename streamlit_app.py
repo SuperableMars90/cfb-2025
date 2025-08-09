@@ -62,7 +62,7 @@ def has_submitted_this_week(user_id, week):
 # -----------------------
 # Load JSON Poll Data
 # -----------------------
-with open("poll_data.json", "r") as f:
+with open("data/current_teams.json", "r") as f:
     poll_data = json.load(f)
 
 question_ids = get_all_question_ids(poll_data)
