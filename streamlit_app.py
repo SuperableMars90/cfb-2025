@@ -164,4 +164,4 @@ elif st.session_state.page == "poll":
         st.success("Response recorded! Thank you!")
         st.session_state.responses = {}
         st.session_state.page = "login"
-        st.experimental_rerun()
+        st.rerun()
