@@ -83,7 +83,7 @@ if st.session_state.page == "login":
                 st.session_state.user_id = user_id
                 st.session_state.week = week
                 st.session_state.page = "poll"
-                st.experimental_rerun()
+                st.rerun()
         else:
             st.error("Invalid Player ID")
 
