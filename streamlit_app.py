@@ -1,13 +1,5 @@
 import streamlit as st
 import json
-import pandas as pd
-from datetime import datetime
-import os
-import gspread
-from google.oauth2.service_account import Credentials
-
-import streamlit as st
-import json
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
@@ -68,13 +60,16 @@ with open("data/current_teams.json", "r") as f:
 question_ids = get_all_question_ids(poll_data)
 
 # -----------------------
-# Login
+# Session State Init
 # -----------------------
 if "page" not in st.session_state:
     st.session_state.page = "login"
 if "responses" not in st.session_state:
     st.session_state.responses = {}
 
+# -----------------------
+# Login Page
+# -----------------------
 if st.session_state.page == "login":
     st.header("Login")
     user_id = st.text_input("Enter your Player ID")
@@ -88,7 +83,7 @@ if st.session_state.page == "login":
                 st.session_state.user_id = user_id
                 st.session_state.week = week
                 st.session_state.page = "poll"
-                st.rerun()
+                st.experimental_rerun()
         else:
             st.error("Invalid Player ID")
 
@@ -98,39 +93,75 @@ if st.session_state.page == "login":
 elif st.session_state.page == "poll":
     st.header(f"Weekly Poll - Week {st.session_state.week}")
 
-    ready_to_submit = True
+    main_qid = "Player"
+    main_q = poll_data[main_qid]
 
-    for qid, qdata in poll_data.items():
-        st.subheader(qdata["text"])
+    # Force "Player" question to the logged in user
+    st.write(f"Filling poll for player: **{st.session_state.user_id}**")
 
-        if qdata.get("type") == "multiselect":
-            selections = st.multiselect(
-                qdata["text"],
-                qdata["options"],
-                key=qid
+    # Set main question answer in session_state responses
+    st.session_state.responses[main_qid] = st.session_state.user_id
+
+    # Render follow-up questions based on logged-in player
+    followups = main_q.get("followups", {}).get(st.session_state.user_id, {})
+
+    for qid, qdata in followups.items():
+        question_text = qdata["question"]
+        options = qdata["answers"]
+        is_multi = qdata.get("multi", False)
+        max_sel = qdata.get("max_selections", None)
+
+        # Fetch previous answer(s) if any
+        prev_answer = st.session_state.responses.get(qid, [] if is_multi else "")
+
+        if is_multi:
+            answer = st.multiselect(
+                question_text,
+                options,
+                default=prev_answer,
+                key=qid,
+                max_selections=max_sel
             )
-            st.session_state.responses[qid] = selections
-
-        elif qdata.get("type") == "selectbox":
-            choice = st.selectbox(
-                qdata["text"],
-                [""] + qdata["options"],
-                key=qid
-            )
-            st.session_state.responses[qid] = choice
-
         else:
-            st.error(f"Unknown question type for {qid}")
+            answer = st.selectbox(
+                question_text,
+                ["-- Select --"] + options,
+                index=(options.index(prev_answer) + 1 if prev_answer in options else 0),
+                key=qid
+            )
+            if answer == "-- Select --":
+                answer = ""
+
+        st.session_state.responses[qid] = answer
+
+    # Check if all required questions are answered (no empty responses)
+    ready_to_submit = True
+    for qid in question_ids:
+        ans = st.session_state.responses.get(qid, "")
+        if ans == "" or ans == []:
+            ready_to_submit = False
+            break
 
     if st.button("Submit", disabled=not ready_to_submit):
         st.session_state.responses["timestamp"] = datetime.now().isoformat()
 
-        row = [st.session_state.get("user_id", ""), str(st.session_state.get("week", ""))]
-        row += [json.dumps(st.session_state.responses.get(qid, "")) for qid in question_ids]
+        # Prepare row for Sheets
+        row = [
+            st.session_state.get("user_id", ""),
+            str(st.session_state.get("week", ""))
+        ]
+        for qid in question_ids:
+            ans = st.session_state.responses.get(qid, "")
+            if isinstance(ans, list):
+                ans_str = ", ".join(ans)
+            else:
+                ans_str = ans
+            row.append(ans_str)
         row.append(st.session_state.responses.get("timestamp", ""))
 
         write_to_gsheet(row)
 
-        st.success("Response recorded!")
-        st.session_state.page = "login"
+        st.success("Response recorded! Thank you!")
         st.session_state.responses = {}
+        st.session_state.page = "login"
+        st.experimental_rerun()
