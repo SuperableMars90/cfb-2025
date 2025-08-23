@@ -134,16 +134,32 @@ elif st.session_state.page == "poll":
 
         st.session_state.responses[qid] = answer
 
-    # Check if all required questions are answered (no empty responses)
-    ready_to_submit = True
-    for qid in question_ids:
-        ans = st.session_state.responses.get(qid, "")
-        if ans == "" or ans == []:
-            ready_to_submit = False
-            break
+    # Check if all required questions are answered (no empty responses when options exist)
+ready_to_submit = True
 
-    if st.button("Submit", disabled=not ready_to_submit):
-        st.session_state.responses["timestamp"] = datetime.now().isoformat()
+for qid in question_ids:
+    ans = st.session_state.responses.get(qid, "")
+
+    # find the question metadata in poll_data
+    qdata = None
+    if qid in poll_data:  # top-level question
+        qdata = poll_data[qid]
+    else:
+        for main_q in poll_data.values():
+            for followups in main_q.get("followups", {}).values():
+                if qid in followups:
+                    qdata = followups[qid]
+                    break
+            if qdata:
+                break
+
+    options = qdata.get("answers", []) if qdata else []
+
+    # only enforce non-empty answer if there *are* options to choose from
+    if options and (ans == "" or ans == []):
+        ready_to_submit = False
+        break
+
 
         # Prepare row for Sheets
         row = [
