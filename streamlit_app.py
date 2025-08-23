@@ -51,134 +51,57 @@ def has_submitted_this_week(user_id, week):
             return True
     return False
 
-# -----------------------
-# Load JSON Poll Data
-# -----------------------
-with open("data/current_teams.json", "r") as f:
-    poll_data = json.load(f)
+import streamlit as st
+import json
 
-question_ids = get_all_question_ids(poll_data)
+# ----------------
+# Load your single JSON file
+# ----------------
+with open("survey.json") as f:
+    data = json.load(f)
 
-# -----------------------
-# Session State Init
-# -----------------------
-if "page" not in st.session_state:
-    st.session_state.page = "login"
-if "responses" not in st.session_state:
-    st.session_state.responses = {}
+# Top-level keys are players
+players = list(data.keys())
 
-# -----------------------
-# Login Page
-# -----------------------
-if st.session_state.page == "login":
-    st.header("Login")
-    user_id = st.text_input("Enter your Player ID")
-    week = st.number_input("Week Number", min_value=1, step=1)
+# ----------------
+# Step 1: Pick person
+# ----------------
+st.title("Weekly Picks Survey")
 
-    if st.button("Start Poll"):
-        if user_id in st.secrets["player_ids"].values():
-            if has_submitted_this_week(user_id, week):
-                st.error(f"You have already submitted for Week {week}.")
-            else:
-                st.session_state.user_id = user_id
-                st.session_state.week = week
-                st.session_state.page = "poll"
-                st.rerun()
-        else:
-            st.error("Invalid Player ID")
+person = st.selectbox("Who are you?", players)
 
-# -----------------------
-# Poll Page
-# -----------------------
-elif st.session_state.page == "poll":
-    st.header(f"Weekly Poll - Week {st.session_state.week}")
+if person:
+    st.write(f"Welcome, **{person}**! Please make your picks.")
 
-    main_qid = "Player"
-    main_q = poll_data[main_qid]
+    answers = {}
+    person_questions = data[person]   # <-- dictionary of categories for that person
 
-    # Force "Player" question to the logged in user
-    st.write(f"Filling poll for player: **{st.session_state.user_id}**")
+    # ----------------
+    # Step 2: Iterate questions
+    # ----------------
+    for q_key, opts in person_questions.items():
+        st.markdown(f"### {q_key}")
 
-    # Set main question answer in session_state responses
-    st.session_state.responses[main_qid] = st.session_state.user_id
-
-    # Render follow-up questions based on logged-in player
-    followups = main_q.get("followups", {}).get(st.session_state.user_id, {})
-
-    for qid, qdata in followups.items():
-        question_text = qdata["question"]
-        options = qdata["answers"]
-        is_multi = qdata.get("multi", False)
-        max_sel = qdata.get("max_selections", None)
-
-        # Fetch previous answer(s) if any
-        prev_answer = st.session_state.responses.get(qid, [] if is_multi else "")
-
-        if is_multi:
-            answer = st.multiselect(
-                question_text,
-                options,
-                default=prev_answer,
-                key=qid,
-                max_selections=max_sel
+        if q_key == "P4 Flex":
+            selection = st.multiselect(
+                f"Select up to 4 teams for {q_key}",
+                opts,
+                max_selections=4
+            )
+        elif q_key == "G5 Flex":
+            selection = st.multiselect(
+                f"Select up to 2 teams for {q_key}",
+                opts,
+                max_selections=2
             )
         else:
-            answer = st.selectbox(
-                question_text,
-                ["-- Select --"] + options,
-                index=(options.index(prev_answer) + 1 if prev_answer in options else 0),
-                key=qid
-            )
-            if answer == "-- Select --":
-                answer = ""
+            selection = st.radio(f"Pick one from {q_key}", opts, index=None)
 
-        st.session_state.responses[qid] = answer
+        answers[q_key] = selection
 
-    # Check if all required questions are answered (no empty responses when options exist)
-ready_to_submit = True
-
-
-for qid in question_ids:
-    ans = st.session_state.responses.get(qid, "")
-
-    # find the question metadata in poll_data
-    qdata = None
-    if qid in poll_data:  # top-level question
-        qdata = poll_data[qid]
-    else:
-        for main_q in poll_data.values():
-            for followups in main_q.get("followups", {}).values():
-                if qid in followups:
-                    qdata = followups[qid]
-                    break
-            if qdata:
-                break
-    
-    options = qdata.get("answers", []) if qdata else []
-
-    # only enforce non-empty answer if there *are* options to choose from
-    if options and (ans == "" or ans == []):
-        ready_to_submit = False
-        break
-
-
-        # Prepare row for Sheets
-        row = [
-            st.session_state.get("user_id", ""),
-            str(st.session_state.get("week", ""))
-        ]
-        for qid in question_ids:
-            ans = st.session_state.responses.get(qid, "")
-            if isinstance(ans, list):
-                ans_str = ", ".join(ans)
-            else:
-                ans_str = ans
-            row.append(ans_str)
-        row.append(st.session_state.responses.get("timestamp", ""))
-
-        write_to_gsheet(row)
-
-        st.success("Response recorded! Thank you!")
-        st.session_state.responses = {}
-        st.session_state.page = "login"
-        st.rerun()
+    # ----------------
+    # Step 3: Submit
+    # ----------------
+    if st.button("Submit"):
+        st.success("Thanks for submitting your picks!")
+        st.json(answers)
