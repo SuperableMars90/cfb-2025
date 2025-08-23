@@ -79,7 +79,23 @@ if person:
     # ----------------
     # Step 2: Iterate questions
     # ----------------
-    for q_key, opts in person_questions.items():
+    QUESTION_ORDER = [
+    "ACC",
+    "Big 10",
+    "Big 12",
+    "SEC",
+    "P4 Flex",
+    "American Athletic",
+    "Conference USA",
+    "Mid-American",
+    "Mountain West",
+    "Sun Belt",
+    "G5 Flex",
+    "Wild Card"
+]
+    #for q_key, opts in person_questions.items():
+    for q_key in QUESTION_ORDER:
+        opts = person_questions[q_key]
         st.markdown(f"### {q_key}")
 
         if q_key == "P4 Flex":
@@ -103,5 +119,18 @@ if person:
     # Step 3: Submit
     # ----------------
     if st.button("Submit"):
-        st.success("Thanks for submitting your picks!")
+        # Build row: timestamp, person, then answers in fixed order
+        row = [datetime.now().isoformat(), person]
+        for q_key in QUESTION_ORDER:
+            if q_key not in answers:
+                row.append("")  # blank if missing
+            else:
+                val = answers[q_key]
+                if isinstance(val, list):  # multiselect answers
+                    row.append(", ".join(val))
+                else:
+                    row.append(val)
+        
+        sheet.append_row(row)
+        st.success("Your picks have been submitted!")
         st.json(answers)
