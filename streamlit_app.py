@@ -130,7 +130,17 @@ if person:
                     row.append(", ".join(val))
                 else:
                     row.append(val)
-        
+        scope = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive"
+        ]
+        credentials = Credentials.from_service_account_info(
+            st.secrets["gcp_service_account"], scopes=scope
+        )
+        client = gspread.authorize(credentials)
+
+        sheet = client.open_by_key("1RcC3Sv5NuD7isPRxac121rYwAseUlONyOv_cMLgD1Ak")
+        worksheet = sheet.sheet1
         sheet.append_row(row)
         st.success("Your picks have been submitted!")
         st.json(answers)
