@@ -169,3 +169,4 @@ data/.tokens
 troubleshooting.ipynb
 .streamlit/*
 make_picks.ipynb
+add_independents.ipynb
