@@ -57,7 +57,7 @@ import json
 # ----------------
 # Load your single JSON file
 # ----------------
-with open("survey.json") as f:
+with open("data/survey.json") as f:
     data = json.load(f)
 
 # Top-level keys are players
