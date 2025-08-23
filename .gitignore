@@ -168,3 +168,4 @@ data/.tokens
 .secret
 troubleshooting.ipynb
 .streamlit/*
+make_picks.ipynb
