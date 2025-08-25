@@ -1,8 +1,8 @@
-#Current Rosters and Status
+# Current Rosters and Status
 
-##Rosters By Player
+## Rosters By Player
 
-###Bob Roster
+### Bob Roster
 
 **ACC**
 
@@ -76,7 +76,7 @@
 
 	UConn
 
-###Dan Roster
+### Dan Roster
 
 **ACC**
 
@@ -148,7 +148,7 @@
 
 	Notre Dame
 
-###Jacob Roster
+### Jacob Roster
 
 **ACC**
 
@@ -218,7 +218,7 @@
 
 	Louisiana
 
-###Zach Roster
+### Zach Roster
 
 **ACC**
 
@@ -288,7 +288,7 @@
 
 	Texas State
 
-###Unclaimed teams
+### Unclaimed teams
 
 **Mid-American**
 
