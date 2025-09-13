@@ -170,6 +170,8 @@
 
 	Arizona
 
+ 	Colorado
+
 	Kansas
 
 	Kansas State
@@ -211,8 +213,6 @@
 	Utah State
 
 **Sun Belt**
-
-	Arkansas State
 
 	Georgia State
 
@@ -256,6 +256,8 @@
 
 	Texas A&M
 
+  	Kentucky
+
 **American Athletic**
 
 	Tulane
@@ -278,8 +280,6 @@
 
 	Hawai'i
 
-	San Diego State
-
 **Sun Belt**
 
 	South Alabama
@@ -290,81 +290,15 @@
 
 ### Unclaimed teams
 
-**Mid-American**
+**ACC**
 
-	Akron
+	Stanford
 
-	Ball State
+	Syracuse
 
-	Eastern Michigan
+	Virginia
 
-	Kent State
-
-**Sun Belt**
-
-	Appalachian State
-
-	Louisiana Monroe
-
-	Southern Mississippi
-
-	Troy
-
-**SEC**
-
-	Arkansas
-
-	Kentucky
-
-	Mississippi State
-
-	Vanderbilt
-
-**American Athletic**
-
-	Charlotte
-
-	Rice
-
-	Temple
-
-	Tulsa
-
-	UAB
-
-	UT San Antonio
-
-**Big 12**
-
-	Cincinnati
-
-	Colorado
-
-	Houston
-
-	UCF
-
-**FBS Independents**
-
-	Connecticut
-
-	UMass
-
-**Conference USA**
-
-	Florida International
-
-	Kennesaw State
-
-	New Mexico State
-
-	Sam Houston State
-
-**Mountain West**
-
-	Nevada
-
-	New Mexico
+	Wake Forest
 
 **Big Ten**
 
@@ -378,33 +312,9 @@
 
 	Wisconsin
 
-**ACC**
-
-	Stanford
-
-	Syracuse
-
-	Virginia
-
-	Wake Forest
-
-###Unclaimed teams
-
-**ACC**
-
-	Stanford
-
-	Syracuse
-
-	Virginia
-
-	Wake Forest
-
-**Big 12**
+ **Big 12**
 
 	Cincinnati
-
-	Colorado
 
 	Houston
 
@@ -414,12 +324,14 @@
 
 	Arkansas
 
-	Kentucky
-
 	Mississippi State
 
 	Vanderbilt
 
+ **FBS Independents**
+
+	UMass
+ 
 **American Athletic**
 
 	Charlotte
@@ -434,7 +346,7 @@
 
 	UT San Antonio
 
-**Conference USA**
+ **Conference USA**
 
 	Florida International
 
@@ -454,113 +366,22 @@
 
 	Kent State
 
-**Mountain West**
+ **Mountain West**
 
 	Nevada
 
 	New Mexico
 
+  	San Diego State
+
 **Sun Belt**
 
 	Appalachian State
+
+ 	Arkansas State
 
 	Louisiana Monroe
 
 	Southern Mississippi
 
 	Troy
-
-###Unclaimed teams
-
-**ACC**
-
-	Stanford
-
-	Syracuse
-
-	Virginia
-
-	Wake Forest
-
-**Big 10**
-
-	Northwestern
-
-	Purdue
-
-	Rutgers
-
-	UCLA
-
-	Wisconsin
-
-**Big 12**
-
-	Cincinnati
-
-	Colorado
-
-	Houston
-
-	UCF
-
-**SEC**
-
-	Arkansas
-
-	Kentucky
-
-	Mississippi State
-
-	Vanderbilt
-
-**American Athletic**
-
-	Charlotte
-
-	Rice
-
-	Temple
-
-	Tulsa
-
-	UAB
-
-	UT San Antonio
-
-**Conference USA**
-
-	Florida International
-
-	Kennesaw State
-
-	New Mexico State
-
-	Sam Houston State
-
-**Mid-American**
-
-	Akron
-
-	Ball State
-
-	Eastern Michigan
-
-	Kent State
-
-**Mountain West**
-
-	Nevada
-
-	New Mexico
-
-**Sun Belt**
-
-	Appalachian State
-
-	Louisiana Monroe
-
-	Southern Mississippi
-
-	Troy
-
