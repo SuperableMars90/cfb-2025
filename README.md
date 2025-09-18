@@ -1,5 +1,5 @@
-# Current Rosters and Status
-## Rosters By Player
+#Current Rosters and Status
+##Rosters By Player
 ### Bob Roster
 **ACC**
 	Florida State
@@ -12,10 +12,10 @@
 **Big 12**
 	Texas Tech
 	Utah
+	Kansas
 **SEC**
 	Alabama
 	Ole Miss
-	South Carolina
 	Vanderbilt
 **American Athletic**
 	East Carolina
@@ -159,11 +159,11 @@
 	Cincinnati
 	Colorado
 	Houston
-	Kansas
 	UCF
 **SEC**
 	Arkansas
 	Mississippi State
+	South Carolina
 	Texas A&M
 **American Athletic**
 	Charlotte
