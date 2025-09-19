@@ -69,7 +69,7 @@ def drop_team(team,player,teammap):
     return teammap
 
 def add_team(add,owner,teammap,teamconf):
-    g5ind = ['American','Conference USA','Mid-American','Mountain West','Sun Belt','G5 Flex']
+    g5ind = ['American Athletic','Conference USA','Mid-American','Mountain West','Sun Belt','G5 Flex']
     p4ind = ['ACC','Big 10','Big 12','SEC','P4 Flex']
     if teamconf in g5ind:
         addclass = 'G5'
