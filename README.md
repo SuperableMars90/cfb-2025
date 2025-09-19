@@ -148,11 +148,11 @@
 
 **ACC**
 
-	Boston College
-
 	SMU
 
 	Virginia Tech
+
+	Virginia
 
 **Big 10**
 
@@ -167,6 +167,8 @@
 	Arizona
 
 	Kansas State
+
+	UCF
 
 **SEC**
 
@@ -205,8 +207,6 @@
 	UNLV
 
 	Utah State
-
-	Nevada
 
 **Sun Belt**
 
@@ -288,13 +288,13 @@
 
 **ACC**
 
+	Boston College
+
 	Pittsburgh
 
 	Stanford
 
 	Syracuse
-
-	Virginia
 
 	Wake Forest
 
@@ -317,8 +317,6 @@
 	Colorado
 
 	Houston
-
-	UCF
 
 **SEC**
 
@@ -361,6 +359,8 @@
 	Kent State
 
 **Mountain West**
+
+	Nevada
 
 	New Mexico
 
