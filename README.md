@@ -180,6 +180,8 @@
 
 	South Florida
 
+	Rice
+
 **Conference USA**
 
 	Jacksonville State
@@ -331,8 +333,6 @@
 	Charlotte
 
 	Florida Atlantic
-
-	Rice
 
 	Temple
 

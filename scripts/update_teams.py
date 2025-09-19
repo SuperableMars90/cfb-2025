@@ -77,6 +77,7 @@ def add_team(add,owner,teammap,teamconf):
         addclass = 'P4'
     else:
         addclass = teamconf
+    #print(teamconf)
     if addclass == 'P4':
         teammap[owner][teamconf].append(add)
         teammap[owner]['P4 Flex'].append(add)
@@ -91,9 +92,9 @@ def add_team(add,owner,teammap,teamconf):
         for conference in g5ind:
             teammap[owner][conference].append(add)
             teammap[owner]['G5 Flex'].append(add)
-    teammap[owner]['Wild Card'].append(add)
     else:
         print('Whoops, there was an error. Incorrect classification')
+    teammap[owner]['Wild Card'].append(add)
     return teammap
 
 def rewrite_json(data,jsonfile_path):
