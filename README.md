@@ -77,9 +77,9 @@
 
 **ACC**
 
-	Duke
-
 	Miami
+
+	Boston College
 
 **Big 10**
 
@@ -87,9 +87,9 @@
 
 	Iowa
 
-	Maryland
-
 	USC
+
+	Northwestern
 
 **Big 12**
 
@@ -97,9 +97,9 @@
 
 	Iowa State
 
-	Oklahoma State
-
 	West Virginia
+
+	Cincinnati
 
 **SEC**
 
@@ -170,13 +170,11 @@
 
 	UCF
 
+	Houston
+
 **SEC**
 
-	Florida
-
 	Georgia
-
-	Miss State
 
 **American Athletic**
 
@@ -207,6 +205,8 @@
 	UNLV
 
 	Utah State
+
+	New Mexico
 
 **Sun Belt**
 
@@ -288,7 +288,7 @@
 
 **ACC**
 
-	Boston College
+	Duke
 
 	Pittsburgh
 
@@ -300,7 +300,7 @@
 
 **Big 10**
 
-	Northwestern
+	Maryland
 
 	Purdue
 
@@ -312,15 +312,15 @@
 
 **Big 12**
 
-	Cincinnati
-
 	Colorado
 
-	Houston
+	Oklahoma State
 
 **SEC**
 
 	Arkansas
+
+	Florida
 
 	Mississippi State
 
@@ -361,8 +361,6 @@
 **Mountain West**
 
 	Nevada
-
-	New Mexico
 
 	San Diego State
 
