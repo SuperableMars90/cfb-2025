@@ -226,6 +226,8 @@
 
 	North Carolina
 
+	Pittsburgh
+
 **Big 10**
 
 	Indiana
@@ -268,8 +270,6 @@
 
 	Western Michigan
 
-	Akron
-
 **Mountain West**
 
 	Boise State
@@ -289,8 +289,6 @@
 **ACC**
 
 	Duke
-
-	Pittsburgh
 
 	Stanford
 
@@ -351,6 +349,8 @@
 	Sam Houston State
 
 **Mid-American**
+
+	Akron
 
 	Ball State
 
