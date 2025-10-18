@@ -224,8 +224,6 @@
 
 	Georgia Tech
 
-	North Carolina
-
 	Pittsburgh
 
 **Big 10**
@@ -260,6 +258,8 @@
 
 	UTSA
 
+	Temple
+
 **Conference USA**
 
 	UTEP
@@ -289,6 +289,8 @@
 **ACC**
 
 	Duke
+
+	North Carolina
 
 	Stanford
 
@@ -329,8 +331,6 @@
 	Charlotte
 
 	Florida Atlantic
-
-	Temple
 
 	Tulsa
 
