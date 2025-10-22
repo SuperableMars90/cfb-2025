@@ -49,6 +49,8 @@
 
 	Middle Tennessee
 
+	Kennesaw State
+
 **Mid-American**
 
 	Toledo
@@ -60,8 +62,6 @@
 	Fresno State
 
 **Sun Belt**
-
-	App State
 
 	Georgia Southern
 
@@ -341,8 +341,6 @@
 **Conference USA**
 
 	Florida International
-
-	Kennesaw State
 
 	New Mexico State
 
