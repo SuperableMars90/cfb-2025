@@ -218,8 +218,6 @@
 
 **ACC**
 
-	California
-
 	Clemson
 
 	Georgia Tech
@@ -264,6 +262,8 @@
 
 	UTEP
 
+	Delaware
+
 **Mid-American**
 
 	Buffalo
@@ -287,6 +287,8 @@
 ### Unclaimed teams
 
 **ACC**
+
+	California
 
 	Duke
 
