@@ -238,8 +238,6 @@
 
 	Baylor
 
-	TCU
-
 **SEC**
 
 	LSU
@@ -260,8 +258,6 @@
 
 **Conference USA**
 
-	UTEP
-
 	Delaware
 
 **Mid-American**
@@ -276,6 +272,8 @@
 
 	Hawai'i
 
+	San Diego State
+
 **Sun Belt**
 
 	South Alabama
@@ -283,6 +281,8 @@
 	Southern Miss
 
 	Texas State
+
+	Troy
 
 ### Unclaimed teams
 
@@ -318,6 +318,8 @@
 
 	Oklahoma State
 
+	TCU
+
 **SEC**
 
 	Arkansas
@@ -348,6 +350,8 @@
 
 	Sam Houston State
 
+	UTEP
+
 **Mid-American**
 
 	Akron
@@ -362,8 +366,6 @@
 
 	Nevada
 
-	San Diego State
-
 **Sun Belt**
 
 	Appalachian State
@@ -373,6 +375,4 @@
 	Louisiana Monroe
 
 	Southern Mississippi
-
-	Troy
 
