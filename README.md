@@ -89,7 +89,7 @@
 
 	USC
 
-	Northwestern
+	Rutgers
 
 **Big 12**
 
@@ -97,19 +97,19 @@
 
 	Iowa State
 
-	West Virginia
-
 	Cincinnati
 
-**SEC**
+	Colorado
 
-	Auburn
+**SEC**
 
 	Oklahoma
 
 	Texas
 
 	Texas A&M
+
+	Florida
 
 **American Athletic**
 
@@ -224,13 +224,15 @@
 
 	Pittsburgh
 
+	North Carolina
+
+	Duke
+
 **Big 10**
 
 	Indiana
 
 	Minnesota
-
-	Penn State
 
 **Big 12**
 
@@ -264,8 +266,6 @@
 
 	Buffalo
 
-	Western Michigan
-
 **Mountain West**
 
 	Boise State
@@ -290,10 +290,6 @@
 
 	California
 
-	Duke
-
-	North Carolina
-
 	Stanford
 
 	Syracuse
@@ -304,9 +300,11 @@
 
 	Maryland
 
-	Purdue
+	Northwestern
 
-	Rutgers
+	Penn State
+
+	Purdue
 
 	UCLA
 
@@ -314,17 +312,17 @@
 
 **Big 12**
 
-	Colorado
-
 	Oklahoma State
 
 	TCU
+
+	West Virginia
 
 **SEC**
 
 	Arkansas
 
-	Florida
+	Auburn
 
 	Mississippi State
 
@@ -361,6 +359,8 @@
 	Eastern Michigan
 
 	Kent State
+
+	Western Michigan
 
 **Mountain West**
 
