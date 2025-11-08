@@ -338,7 +338,6 @@
 
 	UAB
 
-	UT San Antonio
 
 **Conference USA**
 
