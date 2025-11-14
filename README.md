@@ -156,8 +156,6 @@
 
 **Big 10**
 
-	Michigan State
-
 	Nebraska
 
 	Ohio State
@@ -181,6 +179,8 @@
 	South Florida
 
 	Rice
+
+	Florida Atlantic
 
 **Conference USA**
 
@@ -209,8 +209,6 @@
 	New Mexico
 
 **Sun Belt**
-
-	Georgia State
 
 	Louisiana
 
@@ -300,6 +298,8 @@
 
 	Maryland
 
+	Michigan State
+
 	Northwestern
 
 	Penn State
@@ -332,12 +332,11 @@
 
 	Charlotte
 
-	Florida Atlantic
-
 	Tulsa
 
 	UAB
 
+	UT San Antonio
 
 **Conference USA**
 
@@ -370,6 +369,8 @@
 	Appalachian State
 
 	Arkansas State
+
+	Georgia State
 
 	Louisiana Monroe
 
