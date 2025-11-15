@@ -150,9 +150,9 @@
 
 	SMU
 
-	Virginia Tech
-
 	Virginia
+
+	Wake Forest
 
 **Big 10**
 
@@ -292,7 +292,7 @@
 
 	Syracuse
 
-	Wake Forest
+	Virginia Tech
 
 **Big 10**
 
@@ -336,7 +336,6 @@
 
 	UAB
 
-	UT San Antonio
 
 **Conference USA**
 
@@ -373,6 +372,3 @@
 	Georgia State
 
 	Louisiana Monroe
-
-	Southern Mississippi
-
