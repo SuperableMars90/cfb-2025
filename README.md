@@ -246,7 +246,9 @@
 
 	Tennessee
 
-	Kentucky
+	Auburn
+
+	South Carolina
 
 **American Athletic**
 
@@ -257,8 +259,6 @@
 	Temple
 
 **Conference USA**
-
-	Delaware
 
 **Mid-American**
 
@@ -322,11 +322,9 @@
 
 	Arkansas
 
-	Auburn
+	Kentucky
 
 	Mississippi State
-
-	South Carolina
 
 **American Athletic**
 
@@ -372,3 +370,5 @@
 	Georgia State
 
 	Louisiana Monroe
+
+
