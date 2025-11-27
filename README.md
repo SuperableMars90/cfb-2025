@@ -166,9 +166,9 @@
 
 	Kansas State
 
-	UCF
-
 	Houston
+
+	TCU
 
 **SEC**
 
@@ -178,9 +178,9 @@
 
 	South Florida
 
-	Rice
-
 	Florida Atlantic
+
+	Tulsa
 
 **Conference USA**
 
@@ -232,6 +232,8 @@
 
 	Minnesota
 
+	Penn State
+
 **Big 12**
 
 	Arizona State
@@ -256,8 +258,6 @@
 
 	UTSA
 
-	Temple
-
 **Conference USA**
 
 **Mid-American**
@@ -273,8 +273,6 @@
 	San Diego State
 
 **Sun Belt**
-
-	South Alabama
 
 	Southern Miss
 
@@ -302,8 +300,6 @@
 
 	Northwestern
 
-	Penn State
-
 	Purdue
 
 	UCLA
@@ -314,7 +310,7 @@
 
 	Oklahoma State
 
-	TCU
+	UCF
 
 	West Virginia
 
@@ -330,10 +326,13 @@
 
 	Charlotte
 
-	Tulsa
+	Rice
+
+	Temple
 
 	UAB
 
+	UT San Antonio
 
 **Conference USA**
 
@@ -371,4 +370,7 @@
 
 	Louisiana Monroe
 
+	South Alabama
+
+	Southern Mississippi
 
