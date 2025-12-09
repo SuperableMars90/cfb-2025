@@ -33,8 +33,10 @@ def get_sheet(sheet_name, worksheet_name="Sheet1"):
 
 
 def ensure_header(sheet, bowls_sorted):
-    existing = sheet.row_values(1)
-
+    try:
+        existing = sheet.row_values(1)
+    except:
+        continue
     if existing:
         return existing  # Already exists
 
@@ -105,6 +107,7 @@ with st.form("bowl_form"):
             }
 
         st.write("")  # small vertical space
+    
 
     submitted = st.form_submit_button("Submit Picks")
 
