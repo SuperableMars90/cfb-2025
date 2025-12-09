@@ -75,7 +75,7 @@ if submitted:
         'parents':[folder_id]
     }
 
-    media = MediaFileUpload(file_name, mimetype='text/plain')
+    media = MediaFileUpload(filename, mimetype='text/plain')
 
     file = service.files().create(
         body=file_metadata,
