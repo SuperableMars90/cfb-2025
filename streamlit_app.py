@@ -57,63 +57,35 @@ import json
 # ----------------
 # Load your single JSON file
 # ----------------
-with open("data/current_teams.json") as f:
+with open("data/bowl_list.json") as f:
     data = json.load(f)
 
 # Top-level keys are players
-players = list(data.keys())
+#players = list(data.keys())
 
 # ----------------
 # Step 1: Pick person
 # ----------------
-st.title("Weekly Picks Survey")
+st.title("Bowl Pick 'em Survey")
 
-person = st.selectbox("Who are you?", players)
+person = st.text_input("Who are you?", players)
 
 if person:
     st.write(f"Welcome, **{person}**! Please make your picks.")
 
     answers = {}
-    person_questions = data[person]   # <-- dictionary of categories for that person
+    person_questions = data   # <-- dictionary of categories for that person
 
     # ----------------
     # Step 2: Iterate questions
     # ----------------
-    QUESTION_ORDER = [
-    "ACC",
-    "Big 10",
-    "Big 12",
-    "SEC",
-    "P4 Flex",
-    "American Athletic",
-    "Conference USA",
-    "Mid-American",
-    "Mountain West",
-    "Sun Belt",
-    "G5 Flex",
-    "Wild Card"
-]
+    # Unordered
+
     #for q_key, opts in person_questions.items():
-    for q_key in QUESTION_ORDER:
-        opts = person_questions[q_key]
+    for q_key in data:
+        opts = data[q_key]['teams']
         st.markdown(f"### {q_key}")
 
-        if q_key == "P4 Flex":
-            selection = st.multiselect(
-                f"Select up to 4 teams for {q_key}",
-                opts,
-                max_selections=4
-            )
-        elif q_key == "G5 Flex":
-            selection = st.multiselect(
-                f"Select up to 2 teams for {q_key}",
-                opts,
-                max_selections=2
-            )
-        else:
-            selection = st.radio(f"Pick one from {q_key}", opts, index=None)
-
-        answers[q_key] = selection
 
     # ----------------
     # Step 3: Submit
