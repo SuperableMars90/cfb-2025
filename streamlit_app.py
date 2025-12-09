@@ -111,13 +111,29 @@ with st.form("bowl_form"):
 
     submitted = st.form_submit_button("Submit Picks")
 
-if submitted:
-    st.success("Submitted!")
-    with open("data/bowl_list.json") as f:
-        bowls_sorted = json.load(f)
-    sheet = get_sheet("Bowl Picks")  # name of your Google Sheet
-    #header = ensure_header(sheet, bowls_sorted)
-    append_response(sheet, answers, bowls_sorted)
+if st.button("Submit"):
+        # Build row: timestamp, person, then answers in fixed order
+        row = [datetime.now().isoformat(), person]
+        for q_key in sorted_items:
+            if q_key not in answers:
+                row.append("")  # blank if missing
+            else:
+                val = answers[q_key]
+                if isinstance(val, list):  # multiselect answers
+                    row.append(", ".join(val))
+                else:
+                    row.append(val)
+        scope = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive"
+        ]
+        credentials = Credentials.from_service_account_info(
+            st.secrets["gcp_service_account"], scopes=scope
+        )
+        client = gspread.authorize(credentials)
 
-    st.write("Saved to Google Sheets!")
-
+        sheet = client.open_by_key("1RcC3Sv5NuD7isPRxac121rYwAseUlONyOv_cMLgD1Ak")
+        worksheet = sheet.sheet1
+        worksheet.append_row(row)
+        st.success("Your picks have been submitted!")
+        st.json(answers)
