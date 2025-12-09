@@ -111,7 +111,7 @@ with st.form("bowl_form"):
 
     submitted = st.form_submit_button("Submit Picks")
 
-if st.button("Submit"):
+if st.button("Submit Picks"):
         # Build row: timestamp, person, then answers in fixed order
         row = [datetime.now().isoformat(), person]
         for q_key in sorted_items:
