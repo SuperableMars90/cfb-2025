@@ -111,7 +111,7 @@ with st.form("bowl_form"):
 if submitted:
     st.success("Submitted!")
 
-    bowls_sorted = load_bowl_data("bowls.json")
+    bowls_sorted = load_bowl_data("data/bowl_list.json")
     sheet = get_sheet("Bowl Picks")  # name of your Google Sheet
     header = ensure_header(sheet, bowls_sorted)
     append_response(sheet, answers, bowls_sorted, header)
