@@ -71,7 +71,7 @@ if submitted:
     st.write(answers)
     filename = f"{answers['user_name']}_picks.json"
     with open(filename,'w+') as f:
-        f.write('')
+        json.dump(answers,f,indent=4)
     file_metadata = {
         'name':filename,
         'parents':[folder_id]
