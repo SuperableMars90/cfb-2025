@@ -113,7 +113,7 @@ with st.form("bowl_form"):
 
 if st.button("Submit Picks"):
         # Build row: timestamp, person, then answers in fixed order
-        row = [datetime.now().isoformat(), person]
+        row = [datetime.now().isoformat(), answers["user_name"]]
         for q_key in sorted_items:
             if q_key not in answers:
                 row.append("")  # blank if missing
