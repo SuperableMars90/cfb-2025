@@ -26,7 +26,7 @@ def get_sheet(sheet_name, worksheet_name="Sheet1"):
     credentials = Credentials.from_service_account_info(
         st.secrets["gcp_service_account"], scopes=scopes
     )
-    client = gspread.authorize(creds)
+    client = gspread.authorize(credentials)
     sheet = client.open_by_key("10BDWDVLFXisIyV1uH8jMuZ0EA6-ltNfxtur03qa7Qt0")
     return sheet
 
