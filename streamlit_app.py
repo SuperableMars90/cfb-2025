@@ -13,7 +13,7 @@ scopes =  [
 credentials = Credentials.from_service_account_info(
     st.secrets["gcp_service_account"], scopes=scopes
 )
-service = build('drive', 'v3', credentials=creds)
+service = build('drive', 'v3', credentials=credentials)
 folder_id = '1QGc6bgTHEmAsnZnREvkGmXQ_6x0KRhxh'
 
 
