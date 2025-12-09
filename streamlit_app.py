@@ -68,7 +68,7 @@ with open("data/bowl_list.json") as f:
 # ----------------
 st.title("Bowl Pick 'em Survey")
 
-person = st.text_input("Who are you?")
+person = st.text_input(label="Who are you?")
 
 if person:
     st.write(f"Welcome, **{person}**! Please make your picks.")
