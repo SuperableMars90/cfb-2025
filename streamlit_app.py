@@ -4,6 +4,8 @@ from datetime import datetime
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from google.oauth2.service_account import Credentials
+import io
+
 import pandas as pd
 
 scopes =  [
@@ -69,18 +71,19 @@ with st.form("bowl_form"):
 if submitted:
     st.success('Submitted!')
     st.write(answers)
+    results_text = json.dumps(answers,indent=4)
+    file_stream = io.BytesIO(results_text.encode('utf-8'))
+
     filename = f"{answers['user_name']}_picks.json"
-    with open(filename,'w+') as f:
-        json.dump(answers,f,indent=4)
     file_metadata = {
         'name':filename,
         'parents':[folder_id]
     }
 
-    media = MediaFileUpload(filename, mimetype='text/plain')
+    media = MediaIoBaseUpload(file_stream, mimetype='text/plain')
 
     file = service.files().create(
-        body=file_metadata,
-        media_body=media,
-        fields='id'
-    ).execute()
+    body=file_metadata,
+    media_body=media,
+    fields='id'
+).execute()
