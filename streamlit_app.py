@@ -1,6 +1,63 @@
 import json
 import streamlit as st
 from datetime import datetime
+import gspread
+from google.oauth2.service_account import Credentials
+import pandas as pd
+
+#def write_to_gsheet(sheet_name, worksheet_name="Sheet1"):
+#    scopes = [
+#       "https://www.googleapis.com/auth/spreadsheets",
+#        "https://www.googleapis.com/auth/drive"
+#    ]
+#    credentials = Credentials.from_service_account_info(
+#        st.secrets["gcp_service_account"], scopes=scope
+#    )
+#    client = gspread.authorize(credentials)
+#    sheet = client.open_by_key("10BDWDVLFXisIyV1uH8jMuZ0EA6-ltNfxtur03qa7Qt0")
+#    worksheet = sheet.sheet1
+#    worksheet.append_row(row_data)
+
+def get_sheet(sheet_name, worksheet_name="Sheet1"):
+    scopes =  [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive"
+    ]
+    credentials = Credentials.from_service_account_info(
+        st.secrets["gcp_service_account"], scopes=scopes
+    )
+    client = gspread.authorize(creds)
+    sheet = client.open(sheet_name).worksheet(worksheet_name)
+    return sheet
+
+
+
+def ensure_header(sheet, bowls_sorted):
+    existing = sheet.row_values(1)
+
+    if existing:
+        return existing  # Already exists
+
+    header = ["user_name"]
+
+    for bowl_id, info in bowls_sorted:
+        header.append(info["name"])                   # pick column
+        header.append(f"{info['name']} — Parlay")     # parlay column
+
+    sheet.append_row(header)
+    return header
+
+def append_response(sheet, answers, bowls_sorted, header):
+    row = [answers["user_name"]]
+
+    for bowl_id, info in bowls_sorted:
+        pick = answers[bowl_id]["pick"]
+        parlay = answers[bowl_id]["parlay_code"]
+        row.append(pick)
+        row.append(parlay)
+
+    sheet.append_row(row)
+
 
 # ---- Load your JSON file ----
 with open("data/bowl_list.json", "r") as f:
@@ -53,4 +110,11 @@ with st.form("bowl_form"):
 
 if submitted:
     st.success("Submitted!")
-    st.write(answers)
+
+    bowls_sorted = load_bowl_data("bowls.json")
+    sheet = get_sheet("Bowl Picks")  # name of your Google Sheet
+    header = ensure_header(sheet, bowls_sorted)
+    append_response(sheet, answers, bowls_sorted, header)
+
+    st.write("Saved to Google Sheets!")
+
