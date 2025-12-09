@@ -3,7 +3,7 @@ import streamlit as st
 from datetime import datetime
 
 # ---- Load your JSON file ----
-with open("data/bowl_list.json", "r") as f:
+with open("bowls.json", "r") as f:
     bowls = json.load(f)
 
 # ---- Convert dict → sorted list by date ----
@@ -28,12 +28,26 @@ with st.form("bowl_form"):
 
     # Loop through bowls in date order
     for bowl_id, info in sorted_items:
-        selected = st.radio(
-            label=info["name"],          # Display name
-            options=info["teams"],       # Team options
-            key=f"bowl_{bowl_id}"        # Unique key
-        )
-        answers[bowl_id] = selected
+
+        # Group the radio + parlay code
+        with st.container():
+            selected = st.radio(
+                label=info["name"],          # Display name
+                options=info["teams"],       # Team options
+                key=f"bowl_{bowl_id}"
+            )
+
+            parlay_code = st.text_input(
+                label="Parlay code", 
+                key=f"parlay_{bowl_id}"
+            )
+
+            answers[bowl_id] = {
+                "pick": selected,
+                "parlay_code": parlay_code
+            }
+
+        st.write("")  # small vertical space
 
     submitted = st.form_submit_button("Submit Picks")
 
