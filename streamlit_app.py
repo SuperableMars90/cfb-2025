@@ -84,7 +84,7 @@ if person:
     #for q_key, opts in person_questions.items():
     for q_key in data:
         opts = data[q_key]['teams']
-        st.markdown(f"### {q_key}")
+        st.markdown(f"### {data[q_key]['name']}")
 
 
     # ----------------
