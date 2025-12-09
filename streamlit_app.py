@@ -49,7 +49,7 @@ def ensure_header(sheet, bowls_sorted):
     sheet.append_row(header)
     return header
 
-def append_response(sheet, answers, bowls_sorted, header):
+def append_response(sheet, answers, bowls_sorted):
     row = [answers["user_name"]]
 
     for bowl_id, info in bowls_sorted:
@@ -117,7 +117,7 @@ if submitted:
         bowls_sorted = json.load(f)
     sheet = get_sheet("Bowl Picks")  # name of your Google Sheet
     #header = ensure_header(sheet, bowls_sorted)
-    append_response(sheet, answers, bowls_sorted, header)
+    append_response(sheet, answers, bowls_sorted)
 
     st.write("Saved to Google Sheets!")
 
