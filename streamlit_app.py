@@ -3,7 +3,7 @@ import streamlit as st
 from datetime import datetime
 
 # ---- Load your JSON file ----
-with open("bowls.json", "r") as f:
+with open("data/bowl_list.json", "r") as f:
     bowls = json.load(f)
 
 # ---- Convert dict → sorted list by date ----
