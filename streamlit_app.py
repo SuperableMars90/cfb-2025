@@ -36,7 +36,7 @@ def ensure_header(sheet, bowls_sorted):
     try:
         existing = sheet.row_values(1)
     except:
-        continue
+        test = 'Test'
     if existing:
         return existing  # Already exists
 
