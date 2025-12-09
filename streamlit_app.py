@@ -1,64 +1,20 @@
 import json
 import streamlit as st
 from datetime import datetime
-import gspread
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
 from google.oauth2.service_account import Credentials
 import pandas as pd
 
-#def write_to_gsheet(sheet_name, worksheet_name="Sheet1"):
-#    scopes = [
-#       "https://www.googleapis.com/auth/spreadsheets",
-#        "https://www.googleapis.com/auth/drive"
-#    ]
-#    credentials = Credentials.from_service_account_info(
-#        st.secrets["gcp_service_account"], scopes=scope
-#    )
-#    client = gspread.authorize(credentials)
-#    sheet = client.open_by_key("10BDWDVLFXisIyV1uH8jMuZ0EA6-ltNfxtur03qa7Qt0")
-#    worksheet = sheet.sheet1
-#    worksheet.append_row(row_data)
-
-def get_sheet(sheet_name, worksheet_name="Sheet1"):
-    scopes =  [
-        "https://www.googleapis.com/auth/spreadsheets",
-        "https://www.googleapis.com/auth/drive"
-    ]
-    credentials = Credentials.from_service_account_info(
-        st.secrets["gcp_service_account"], scopes=scopes
-    )
-    client = gspread.authorize(credentials)
-    sheet = client.open_by_key("10BDWDVLFXisIyV1uH8jMuZ0EA6-ltNfxtur03qa7Qt0")
-    return sheet
-
-
-
-def ensure_header(sheet, bowls_sorted):
-    try:
-        existing = sheet.row_values(1)
-    except:
-        test = 'Test'
-    if existing:
-        return existing  # Already exists
-
-    header = ["user_name"]
-
-    for bowl_id, info in bowls_sorted:
-        header.append(info["name"])                   # pick column
-        header.append(f"{info['name']} — Parlay")     # parlay column
-
-    sheet.append_row(header)
-    return header
-
-def append_response(sheet, answers, bowls_sorted):
-    row = [answers["user_name"]]
-
-    for bowl_id, info in bowls_sorted:
-        pick = answers[bowl_id]["pick"]
-        parlay = answers[bowl_id]["parlay_code"]
-        row.append(pick)
-        row.append(parlay)
-
-    sheet.append_row(row)
+scopes =  [
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+]
+credentials = Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"], scopes=scopes
+)
+service = build('drive', 'v3', credentials=creds)
+folder_id = '1QGc6bgTHEmAsnZnREvkGmXQ_6x0KRhxh'
 
 
 # ---- Load your JSON file ----
@@ -107,33 +63,22 @@ with st.form("bowl_form"):
             }
 
         st.write("")  # small vertical space
-    
 
     submitted = st.form_submit_button("Submit Picks")
 
-if st.button("Submit Picks"):
-        # Build row: timestamp, person, then answers in fixed order
-        row = [datetime.now().isoformat(), answers["user_name"]]
-        for q_key in sorted_items:
-            if q_key not in answers:
-                row.append("")  # blank if missing
-            else:
-                val = answers[q_key]
-                if isinstance(val, list):  # multiselect answers
-                    row.append(", ".join(val))
-                else:
-                    row.append(val)
-        scope = [
-        "https://www.googleapis.com/auth/spreadsheets",
-        "https://www.googleapis.com/auth/drive"
-        ]
-        credentials = Credentials.from_service_account_info(
-            st.secrets["gcp_service_account"], scopes=scope
-        )
-        client = gspread.authorize(credentials)
+if submitted:
+    st.success('Submitted')!
+    st.write(answers)
+    filename = f"{answers['user_name']}_picks.json"
+    file_metadata = {
+        'name':file_name,
+        'parents':[folder_id]
+    }
 
-        sheet = client.open_by_key("1RcC3Sv5NuD7isPRxac121rYwAseUlONyOv_cMLgD1Ak")
-        worksheet = sheet.sheet1
-        worksheet.append_row(row)
-        st.success("Your picks have been submitted!")
-        st.json(answers)
+    media = MediaFileUpload(file_name, mimetype='text/plain')
+
+    file = service.files().create(
+        body=file_metadata,
+        media_body=media,
+        fields='id'
+    ).execute()
