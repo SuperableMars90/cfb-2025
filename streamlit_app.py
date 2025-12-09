@@ -67,7 +67,7 @@ with st.form("bowl_form"):
     submitted = st.form_submit_button("Submit Picks")
 
 if submitted:
-    st.success('Submitted')!
+    st.success('Submitted!')
     st.write(answers)
     filename = f"{answers['user_name']}_picks.json"
     file_metadata = {
