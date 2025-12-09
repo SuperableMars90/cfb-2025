@@ -70,6 +70,8 @@ if submitted:
     st.success('Submitted!')
     st.write(answers)
     filename = f"{answers['user_name']}_picks.json"
+    with open(filename,'w+') as f:
+        f.write('')
     file_metadata = {
         'name':filename,
         'parents':[folder_id]
