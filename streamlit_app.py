@@ -56,7 +56,7 @@ simply select the team with the radio button. For the playoffs, write in the nam
 team you think will win. If possible, please copy the team name from the prior round games 
 if possible - keeping the name consistent helps me with record keeping later.<br>
 For parlays, you can name them whatever you want, just be consistent. Again, copy-paste is 
-preferable to ensure there are typos. I will combine all the picks that have the same parlay 
+preferable to ensure there aren't typos. I will combine all the picks that have the same parlay 
 code together for scoring. If you leave it blank, I will score it as a single.
 </p>
 
