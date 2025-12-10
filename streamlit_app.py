@@ -24,6 +24,16 @@ sorted_items = sorted(
     key=lambda x: parse_dt(x[1]["date"])
 )
 
+playoffs = {
+    'Orange Bowl':['Texas Tech','CFP Game 4 Winner'],
+    'Rose Bowl':['Indiana','CFP Game 1 Winner'],
+    'Sugar Bowl':['Georgia','CFP Game 3 Winner'],
+    'Cotton Bowl':['Ohio State','CFP Game 2 Winner'],
+    'Peach Bowl':['Orange Bowl Winner','Rose Bowl Winner'],
+    'Fiesta Bowl':['Sugar Bowl Winner','Cotton Bowl Winner'],
+    'National Championship':['Fiesta Bowl Winner','Peach Bowl Winner']
+}
+
 # ---- Streamlit Form ----
 st.title("Bowl Picks")
 
@@ -59,6 +69,32 @@ with st.form("bowl_form"):
         st.write("")  # small vertical space
 
     submitted = st.form_submit_button("Submit Picks")
+
+    st.write("---")
+    st.subheader("Playoff Picks")
+
+    for key, pair in playoffs.items():
+
+        display_text = f"{key}: {pair[0]} {pair[1]}"
+
+        with st.container():
+            text_response = st.text_input(
+                label=display_text,
+                key=f"playoff_resp_{key}"
+            )
+
+            parlay_code = st.text_input(
+                label="Parlay code",
+                key=f"playoff_parlay_{key}"
+            )
+
+            answers[f"playoff_{key}"] = {
+                "response": text_response,
+                "parlay_code": parlay_code
+            }
+
+        st.write("")   # small vertical space
+
 
 if submitted:
     st.success("Submitted!")
