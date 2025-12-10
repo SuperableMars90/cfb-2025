@@ -10,16 +10,6 @@ import io
 
 import pandas as pd
 
-scopes =  [
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-]
-credentials = Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"], scopes=scopes
-)
-service = build('drive', 'v3', credentials=credentials)
-folder_id = '1QGc6bgTHEmAsnZnREvkGmXQ_6x0KRhxh'
-
 
 # ---- Load your JSON file ----
 with open("data/bowl_list.json", "r") as f:
@@ -71,21 +61,41 @@ with st.form("bowl_form"):
     submitted = st.form_submit_button("Submit Picks")
 
 if submitted:
-    st.success('Submitted!')
+    st.success("Submitted!")
     st.write(answers)
-    results_text = json.dumps(answers,indent=4)
-    file_stream = io.BytesIO(results_text.encode('utf-8'))
 
-    filename = f"{answers['user_name']}_picks.json"
-    file_metadata = {
-        'name':filename,
-        'parents':[folder_id]
-    }
+    # Convert dict to a compact JSON string
+    results_text = json.dumps(answers, separators=(",", ":"))
 
-    media = MediaIoBaseUpload(file_stream, mimetype='text/plain')
+    # ---- Setup Google Sheets API ----
+    scopes =  [
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+]
+    creds = Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"], scopes=scopes
+)
 
-    file = service.files().create(
-    body=file_metadata,
-    media_body=media,
-    fields='id'
-).execute()
+
+    service = build("sheets", "v4", credentials=creds)
+    sheet = service.spreadsheets()
+
+    # ---- Your Google Sheet ID ----
+    SPREADSHEET_ID = "10BDWDVLFXisIyV1uH8jMuZ0EA6-ltNfxtur03qa7Qt0"
+    RANGE_NAME = "Sheet1!A:B"   # two columns: timestamp | json
+
+    # ---- Build row to insert ----
+    now = datetime.utcnow().isoformat()
+    row = [now, results_text]
+
+    # ---- Append row ----
+    request = sheet.values().append(
+        spreadsheetId=SPREADSHEET_ID,
+        range=RANGE_NAME,
+        valueInputOption="RAW",
+        insertDataOption="INSERT_ROWS",
+        body={"values": [row]},
+    )
+    response = request.execute()
+
+    st.success("Saved to Google Sheets!")
