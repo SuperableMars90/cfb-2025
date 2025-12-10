@@ -36,6 +36,15 @@ playoffs = {
 
 # ---- Streamlit Form ----
 st.title("Bowl Picks")
+st.header('Instructions')
+st.write('<p>Make your picks for the CFB Bowl Pick \'em challenge here.</p>')
+st.write('<h3>Scoring</h3><p>The base scoring is 1 point per correct pick. If you parlay picks together, you get additional points if <i>all</i> picks hit. If you miss one, you get 0' \
+'for all the picks. For each pick in the parlay, you get 1 additional point, so a 2-game parlay results in 2 points per game (4 points total), a 3-game parlay 3 points each (9 total)' \
+', etc.</p>')
+st.write('<h3>Form instructions</h3><p>For all the pre-set games (i.e., everything except the later rounds of the playoffs), simpply select the team with the radio button' \
+'For the playoffs, write in the name of the team you think will win. If possible, please copy the team name from the prior round games if possible - keeping the name consistent helps' \
+'me with record keeping later.<br>For parlays, you can name them whatever you want, just be consistent. Again, copy-paste is preferable to ensure there are typos. I will combine' \
+'all the picks that have the same parlay code together for scoring. If you leave it blank, I will score it as a single.</p><p>Feel free to contact me if you have any questions.</p>')
 
 with st.form("bowl_form"):
     answers = {}
@@ -68,14 +77,12 @@ with st.form("bowl_form"):
 
         st.write("")  # small vertical space
 
-    submitted = st.form_submit_button("Submit Picks")
-
     st.write("---")
     st.subheader("Playoff Picks")
 
     for key, pair in playoffs.items():
 
-        display_text = f"{key}: {pair[0]} {pair[1]}"
+        display_text = f"{key}: {pair[0]} vs {pair[1]}"
 
         with st.container():
             text_response = st.text_input(
@@ -84,7 +91,7 @@ with st.form("bowl_form"):
             )
 
             parlay_code = st.text_input(
-                label="Parlay code",
+                label=f"{key} Parlay code",
                 key=f"playoff_parlay_{key}"
             )
 
@@ -95,10 +102,14 @@ with st.form("bowl_form"):
 
         st.write("")   # small vertical space
 
+    submitted = st.form_submit_button("Submit Picks")
+
+    
+
 
 if submitted:
     st.success("Submitted!")
-    st.write(answers)
+    #st.write(answers)
 
     # Convert dict to a compact JSON string
     results_text = json.dumps(answers, separators=(",", ":"))
